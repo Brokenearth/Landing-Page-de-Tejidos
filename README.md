@@ -4,9 +4,9 @@ Sitio web de marca personal para **[@teje_ideas01](https://www.instagram.com/tej
 
 ## Ver la web en línea
 
-Una vez activado **GitHub Pages** en el repositorio:
+**https://tejeideas.netlify.app/**
 
-**https://brokenearth.github.io/Landing-Page-de-Tejidos/**
+Repositorio del código: [Brokenearth/Landing-Page-de-Tejidos](https://github.com/Brokenearth/Landing-Page-de-Tejidos)
 
 ## Vista local
 
@@ -32,7 +32,7 @@ start index.html
 
 ```
 Landing-Page-de-Tejidos/
-├── index.html              # Página principal (GitHub Pages)
+├── index.html              # Página principal (despliegue en Netlify)
 ├── web-teje-ideas01.html   # Misma web (copia de trabajo)
 ├── assets/
 │   └── instagram/          # Fotos del perfil (profile.jpg, post-*.webp)
@@ -44,6 +44,7 @@ Landing-Page-de-Tejidos/
 
 | Canal | Enlace |
 |--------|--------|
+| Web | [tejeideas.netlify.app](https://tejeideas.netlify.app/) |
 | Instagram | [@teje_ideas01](https://www.instagram.com/teje_ideas01/) |
 | WhatsApp | [+57 324 6036069](https://wa.me/573246036069) |
 | Email | [teje_ideas01@gmail.com](mailto:teje_ideas01@gmail.com) |
@@ -55,18 +56,27 @@ Landing-Page-de-Tejidos/
 3. Sube los cambios a GitHub:
 
 ```bash
-git add index.html assets
+git add index.html assets README.md
 git commit -m "Actualizar contenido de la web"
 git push
 ```
 
-GitHub Pages se actualiza solo en unos minutos.
+Si el sitio está conectado a **Netlify** desde el repositorio de GitHub, el despliegue se hace solo en unos minutos tras cada `push`.
 
-## Despliegue con GitHub Pages
+## Despliegue en Netlify
 
-1. Repositorio → **Settings** → **Pages**
-2. **Source:** Deploy from a branch
-3. **Branch:** `main` → **/ (root)** → Save
+El sitio está publicado en [Netlify](https://tejeideas.netlify.app/) con el dominio **tejeideas.netlify.app**.
+
+Para reconectar o crear un despliegue nuevo:
+
+1. Entra en [netlify.com](https://www.netlify.com/) e inicia sesión.
+2. **Add new site** → **Import an existing project** → conecta GitHub.
+3. Elige el repo `Brokenearth/Landing-Page-de-Tejidos`.
+4. **Build command:** déjalo vacío (sitio estático HTML).
+5. **Publish directory:** `/` (raíz del repo, donde está `index.html`).
+6. **Deploy site**.
+
+Opcional: en **Domain settings** puedes personalizar el subdominio o enlazar un dominio propio.
 
 ## Créditos
 
