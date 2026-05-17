@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teje Ideas — Crochet a mano | @teje_ideas01</title>
+  <meta name="description" content="Tejiendo experiencias con hilos de esperanza y alegría. Servicios de tejidos en crochet a mano.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Fredoka:wght@400;500;600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink: #e891b8;
+      --pink-deep: #d4739f;
+      --pink-soft: #f5d4e6;
+      --pink-pale: #fdf6fa;
+      --blue: #7eb8d4;
+      --blue-deep: #5a9fb8;
+      --blue-soft: #c5e3f0;
+      --blue-pale: #f0f9fc;
+      --cream: #fffcf9;
+      --text: #3a2f42;
+      --muted: #7a6d82;
+      --wa: #25d366;
+      --shadow-soft: 0 4px 24px rgba(58, 47, 66, 0.06);
+      --shadow-lift: 0 12px 40px rgba(212, 115, 159, 0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Quicksand', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--pink-pale); }
+    ::-webkit-scrollbar-thumb { background: var(--pink-soft); border-radius: 8px; }
+
+    .yarn-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.5;
+      animation: drift 18s ease-in-out infinite alternate;
+    }
+    .blob-1 { width: 320px; height: 320px; background: var(--pink-soft); top: 5%; left: -5%; }
+    .blob-2 { width: 280px; height: 280px; background: var(--blue-soft); top: 40%; right: -8%; animation-delay: -6s; }
+    .blob-3 { width: 200px; height: 200px; background: #e8d4f0; bottom: 10%; left: 30%; animation-delay: -12s; }
+    @keyframes drift {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(30px, -20px) scale(1.08); }
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.4s, backdrop-filter 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 32px rgba(94, 200, 242, 0.15);
+    }
+    .logo {
+      font-family: 'Caveat', cursive;
+      font-weight: 700;
+      font-size: 1.75rem;
+      color: var(--pink-deep);
+    }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--pink); }
+    .menu-btn { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+
+    main { position: relative; z-index: 1; }
+
+    .hero {
+      min-height: 100vh;
+      padding: 6.5rem 1.5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    .hero-intro { text-align: left; width: 100%; margin-bottom: 1.5rem; padding: 0 0.5rem; }
+    .hero-intro .scribble {
+      font-family: 'Caveat', cursive;
+      font-size: 1.65rem;
+      color: var(--pink-deep);
+      transform: rotate(-2deg);
+      display: inline-block;
+    }
+
+    .ig-card {
+      background: rgba(255, 252, 250, 0.92);
+      border-radius: 28px 32px 26px 34px;
+      box-shadow: var(--shadow-soft);
+      padding: 1.75rem 1.5rem 1.5rem;
+      max-width: 440px;
+      width: 100%;
+      position: relative;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(232, 145, 184, 0.2);
+      transform: rotate(-0.8deg);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .ig-card:hover {
+      transform: rotate(0deg) translateY(-4px);
+      box-shadow: var(--shadow-lift);
+    }
+    .ig-card::after {
+      content: '';
+      position: absolute;
+      top: 12px; right: -8px;
+      width: 48px; height: 48px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e891b8' opacity='0.35'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z'/%3E%3C/svg%3E") no-repeat center;
+      opacity: 0;
+    }
+
+    .ig-top { display: flex; gap: 1.25rem; align-items: flex-start; text-align: left; margin-bottom: 1rem; }
+    .avatar-wrap { position: relative; flex-shrink: 0; }
+    .avatar-ring {
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      padding: 3px;
+      background: var(--pink-soft);
+      box-shadow: 4px 6px 0 var(--blue-soft);
+    }
+    .avatar-ring img {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--cream);
+      display: block;
+    }
+    .ig-stats {
+      display: flex;
+      gap: 1.25rem;
+      flex: 1;
+      justify-content: space-around;
+      padding-top: 0.5rem;
+    }
+    .ig-stats div { text-align: center; }
+    .ig-stats strong { display: block; font-size: 1.15rem; font-weight: 700; }
+    .ig-stats span { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; }
+
+    .ig-name {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 0.15rem;
+      letter-spacing: -0.02em;
+    }
+    .ig-handle {
+      color: var(--blue-deep);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .ig-handle:hover { color: var(--pink-deep); }
+    .ig-bio {
+      font-family: 'Caveat', cursive;
+      font-size: 1.35rem;
+      color: var(--text);
+      line-height: 1.4;
+      margin-bottom: 0.85rem;
+    }
+    .ig-category { font-size: 0.8rem; color: var(--muted); margin-bottom: 1rem; font-weight: 500; }
+
+    .ig-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.45rem;
+      margin-bottom: 1rem;
+    }
+    .ig-btn {
+      padding: 0.6rem 0.65rem;
+      border-radius: 14px 18px 16px 12px;
+      font-weight: 600;
+      font-size: 0.82rem;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .ig-btn:hover { transform: translateY(-2px) scale(1.02); }
+    .ig-btn-primary {
+      background: var(--pink);
+      color: white;
+      box-shadow: 3px 4px 0 var(--pink-deep);
+      grid-column: span 2;
+    }
+    .ig-btn-primary:hover { box-shadow: 2px 2px 0 var(--pink-deep); }
+    .ig-btn-whatsapp {
+      background: var(--wa);
+      color: white;
+      box-shadow: 3px 4px 0 #1da851;
+      grid-column: span 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+    .ig-btn-whatsapp:hover { box-shadow: 2px 2px 0 #1da851; }
+    .ig-btn-secondary {
+      background: var(--blue-pale);
+      color: var(--text);
+      border: 1px dashed var(--blue-soft);
+    }
+    .ig-btn-outline {
+      background: transparent;
+      border: 1px solid rgba(122, 109, 130, 0.25);
+      color: var(--muted);
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+    .mini-grid a {
+      display: block;
+      border-radius: 12px 16px 14px 10px;
+      overflow: hidden;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .mini-grid a:nth-child(odd) { transform: rotate(-1deg); }
+    .mini-grid a:nth-child(even) { transform: rotate(0.8deg); }
+    .mini-grid a:hover {
+      transform: rotate(0deg) scale(1.04);
+      box-shadow: var(--shadow-lift);
+      z-index: 2;
+      position: relative;
+    }
+    .mini-grid img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-bottom { text-align: left; width: 100%; padding: 0 0.5rem; }
+    .hero-title {
+      font-family: 'Fredoka', sans-serif;
+      font-size: clamp(1.85rem, 4.5vw, 2.75rem);
+      font-weight: 500;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+    .hero-title em {
+      font-family: 'Caveat', cursive;
+      font-style: normal;
+      color: var(--pink-deep);
+      font-size: 1.15em;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+    .community-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--pink-pale);
+      border: 1px dashed var(--pink-soft);
+      border-radius: 20px 24px 22px 18px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    section {
+      padding: 5rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-label {
+      display: inline-block;
+      padding: 0.3rem 0.85rem;
+      background: transparent;
+      border-radius: 14px 18px 16px 12px;
+      font-family: 'Caveat', cursive;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--pink-deep);
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px) rotate(0.5deg);
+      transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0) rotate(0); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .about-text p { line-height: 1.75; color: var(--muted); margin-bottom: 1rem; font-size: 1.05rem; }
+    .pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .pill {
+      padding: 0.4rem 0.9rem;
+      border-radius: 16px 20px 18px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      background: var(--cream);
+      border: 1px dashed var(--pink-soft);
+      color: var(--text);
+    }
+    .pill:nth-child(odd) { transform: rotate(-1deg); }
+    .pill:nth-child(even) { transform: rotate(1deg); }
+    .about-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.65rem;
+    }
+    .about-visual img {
+      width: 100%;
+      border-radius: 18px 22px 16px 20px;
+      object-fit: cover;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.4s ease;
+    }
+    .about-visual img:hover { transform: scale(1.03) rotate(0deg); }
+    .about-visual img:first-child { grid-row: span 2; height: 100%; min-height: 280px; transform: rotate(-1.5deg); }
+    .about-visual img:nth-child(2) { transform: rotate(1.2deg); }
+    .about-visual img:nth-child(3) { transform: rotate(-0.8deg); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: rgba(255, 252, 250, 0.9);
+      border-radius: 22px 28px 24px 26px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(197, 227, 240, 0.6);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      position: relative;
+    }
+    .service-card:nth-child(1) { transform: rotate(-0.6deg); }
+    .service-card:nth-child(2) { transform: rotate(0.5deg); margin-top: 0.5rem; }
+    .service-card:nth-child(3) { transform: rotate(-0.4deg); }
+    .service-card:hover {
+      transform: rotate(0deg) translateY(-6px);
+      box-shadow: var(--shadow-lift);
+    }
+    .service-card h3 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.65rem;
+      color: var(--pink-deep);
+    }
+    .service-card p { color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
+    .service-card a {
+      color: var(--blue);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .service-card a:hover { text-decoration: underline; }
+
+    .gallery-wrap {
+      padding: 2rem 0;
+      margin: 0 -0.5rem;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.85rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: 20px 24px 18px 22px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      cursor: pointer;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .gallery-item:nth-child(3n+1) { transform: rotate(-1.2deg); }
+    .gallery-item:nth-child(3n+2) { transform: rotate(0.8deg); }
+    .gallery-item:nth-child(3n) { transform: rotate(-0.5deg); }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s ease;
+    }
+    .gallery-item:hover {
+      transform: rotate(0deg) scale(1.03);
+      box-shadow: var(--shadow-lift);
+      z-index: 2;
+    }
+    .gallery-item:hover img { transform: scale(1.06); }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      text-align: center;
+    }
+    .metric-card {
+      background: rgba(255, 252, 250, 0.85);
+      padding: 1.5rem 1rem;
+      border-radius: 18px 22px 20px 16px;
+      box-shadow: var(--shadow-soft);
+      border: 1px dashed var(--pink-soft);
+    }
+    .metric-card:nth-child(2) { border-color: var(--blue-soft); }
+    .metric-num {
+      font-family: 'Caveat', cursive;
+      font-size: 2.75rem;
+      font-weight: 700;
+      color: var(--pink-deep);
+      line-height: 1;
+    }
+    .metric-card:nth-child(2) .metric-num { color: var(--blue-deep); }
+    .metric-label { font-size: 0.9rem; color: var(--muted); font-weight: 600; margin-top: 0.35rem; }
+
+    .parallax-band {
+      position: relative;
+      min-height: 220px;
+      margin: 3rem 0;
+      border-radius: 24px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .parallax-band img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 120%;
+      object-fit: cover;
+      will-change: transform;
+    }
+    .parallax-band .overlay {
+      position: relative;
+      z-index: 1;
+      padding: 1.75rem 2rem;
+      background: rgba(255, 252, 250, 0.9);
+      border-radius: 24px 28px 22px 26px;
+      backdrop-filter: blur(6px);
+      max-width: 520px;
+      margin: 1rem;
+      border: 1px dashed var(--pink-soft);
+      transform: rotate(-0.5deg);
+    }
+    .parallax-band .overlay p {
+      font-family: 'Caveat', cursive;
+      font-size: 1.85rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.35;
+    }
+
+    .contact-section {
+      background: rgba(255, 252, 250, 0.92);
+      border-radius: 28px 32px 26px 30px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(232, 145, 184, 0.15);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .contact-form label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      font-size: 0.9rem;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 2px solid var(--blue-pale);
+      border-radius: 12px;
+      font-family: inherit;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--pink);
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 0.95rem;
+      border: none;
+      border-radius: 16px 20px 14px 18px;
+      background: var(--pink);
+      color: white;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 4px 5px 0 var(--pink-deep);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 2px 3px 0 var(--pink-deep);
+    }
+    .contact-link-wa .icon { background: #e8f8ee; }
+    .wa-float {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 200;
+      width: 56px;
+      height: 56px;
+      background: var(--wa);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
+      transition: transform 0.3s ease;
+    }
+    .wa-float:hover { transform: scale(1.08); }
+    .contact-info h3 { font-family: 'Fredoka', sans-serif; margin-bottom: 1rem; }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 0;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      border-bottom: 1px solid var(--pink-pale);
+      transition: color 0.2s;
+    }
+    .contact-link:hover { color: var(--pink); }
+    .contact-link .icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--pink-pale), var(--blue-pale));
+      font-size: 1.25rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2.5rem 1.5rem 3rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    footer a { color: var(--pink); font-weight: 600; text-decoration: none; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .menu-btn { display: block; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: white;
+        padding: 1rem 2rem 1.5rem;
+        box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+      }
+      .ig-top { flex-direction: column; align-items: center; text-align: center; }
+      .ig-stats { width: 100%; }
+      .about-grid, .contact-section { grid-template-columns: 1fr; }
+      .metrics { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <div class="yarn-bg" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <nav id="nav">
+    <span class="logo">Teje Ideas</span>
+    <button class="menu-btn" id="menuBtn" aria-label="Menú">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#sobre">Sobre mí</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero" id="inicio">
+      <article class="ig-card reveal">
+        <div class="ig-top">
+          <div class="avatar-wrap">
+            <div class="avatar-ring">
+              <img src="assets/instagram/profile.jpg" alt="Foto de perfil @teje_ideas01">
+            </div>
+          </div>
+          <ul class="ig-stats">
+            <li><strong>18</strong><span>publicaciones</span></li>
+            <li><strong>14</strong><span>seguidores</span></li>
+            <li><strong>17</strong><span>seguidos</span></li>
+          </ul>
+        </div>
+        <div class="ig-name">
+          teje_ideas01
+        </div>
+        <a class="ig-handle" href="https://www.instagram.com/teje_ideas01/" target="_blank" rel="noopener">@teje_ideas01</a>
+        <p class="ig-category">Tejidos en crochet a mano</p>
+        <p class="ig-bio">Tejiendo experiencias con hilos de esperanza y alegria</p>
+        <div class="ig-actions">
+          <a class="ig-btn ig-btn-whatsapp" href="https://wa.me/573246036069?text=Hola%2C%20me%20interesa%20un%20tejido%20en%20crochet" target="_blank" rel="noopener">💬 WhatsApp</a>
+          <a class="ig-btn ig-btn-primary" href="#contacto">Contactar</a>
+          <a class="ig-btn ig-btn-secondary" href="#servicios">Servicios</a>
+          <a class="ig-btn ig-btn-outline" href="https://www.instagram.com/teje_ideas01/" target="_blank" rel="noopener">Seguir</a>
+        </div>
+        <div class="mini-grid">
+          <a href="https://www.instagram.com/teje_ideas01/" target="_blank" rel="noopener"><img src="assets/instagram/post-1.webp" alt="Post 1"></a>
+          <a href="https://www.instagram.com/teje_ideas01/" target="_blank" rel="noopener"><img src="assets/instagram/post-2.webp" alt="Post 2"></a>
+          <a href="https://www.instagram.com/teje_ideas01/" target="_blank" rel="noopener"><img src="assets/instagram/post-3.webp" alt="Post 3"></a>
+          <a href="https://www.instagram.com/teje_ideas01/" target="_blank" rel="noopener"><img src="assets/instagram/post-4.webp" alt="Post 4"></a>
+          <a href="https://www.instagram.com/teje_ideas01/" target="_blank" rel="noopener"><img src="assets/instagram/post-5.webp" alt="Post 5"></a>
+          <a href="https://www.instagram.com/teje_ideas01/" target="_blank" rel="noopener"><img src="assets/instagram/post-6.webp" alt="Post 6"></a>
+        </div>
+      </article>
+
+      <div class="hero-bottom">
+        <p class="hero-intro reveal"><span class="scribble">hecho con mis manos ✿</span></p>
+        <h1 class="hero-title reveal">Cada puntada, una <em>idea</em> hecha a mano</h1>
+        <p class="hero-sub reveal">Servicios de tejidos en crochet a mano con amor, color y detalle. Piezas únicas tejidas con dedicación.</p>
+        <div class="community-pill reveal">🌸 Comunidad en Instagram: <strong>14 seguidores</strong></div>
+      </div>
+    </header>
+
+    <section id="sobre">
+      <span class="section-label reveal">Sobre mí</span>
+      <h2 class="reveal">Hilos que cuentan historias</h2>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>Soy <strong>@teje_ideas01</strong>, creadora de piezas en crochet hechas completamente a mano. Mi lema es claro: <em>«Tejiendo experiencias con hilos de esperanza y alegría»</em>.</p>
+          <p>Ofrezco servicios de tejidos en crochet a mano para quien busca algo especial, personal y lleno de cariño en cada puntada.</p>
+          <div class="pills">
+            <span class="pill">Crochet a mano</span>
+            <span class="pill">Tejidos artesanales</span>
+            <span class="pill">Piezas únicas</span>
+            <span class="pill">Hecho con amor</span>
+          </div>
+        </div>
+        <div class="about-visual reveal">
+          <img src="assets/instagram/post-7.webp" alt="Trabajo en crochet">
+          <img src="assets/instagram/post-8.webp" alt="Detalle tejido">
+          <img src="assets/instagram/post-9.webp" alt="Creación artesanal">
+        </div>
+      </div>
+    </section>
+
+    <div class="parallax-band reveal" id="parallaxBand">
+      <img src="assets/instagram/post-2.webp" alt="" id="parallaxImg">
+      <div class="overlay">
+        <p>«Tejiendo experiencias con hilos de esperanza y alegría»</p>
+      </div>
+    </div>
+
+    <section id="servicios">
+      <span class="section-label reveal">Servicios</span>
+      <h2 class="reveal">¿Qué puedo tejer para ti?</h2>
+      <div class="services-grid">
+        <article class="service-card reveal">
+          <h3>Tejidos en crochet a mano</h3>
+          <p>Piezas elaboradas 100% a mano con técnica de crochet. Cada trabajo es único y hecho con dedicación.</p>
+          <a href="#contacto">Solicitar encargo →</a>
+        </article>
+        <article class="service-card reveal">
+          <h3>Proyectos personalizados</h3>
+          <p>Cuéntame tu idea y la transformamos en un tejido hecho especialmente para ti. Colores, tamaño y estilo a tu gusto.</p>
+          <a href="mailto:teje_ideas01@gmail.com">Escribir por email →</a>
+        </article>
+        <article class="service-card reveal">
+          <h3>Consulta sin compromiso</h3>
+          <p>¿Tienes dudas sobre un encargo? Escríbeme por Instagram o email y te ayudo con gusto.</p>
+          <a href="https://wa.me/573246036069?text=Hola%2C%20tengo%20una%20consulta" target="_blank" rel="noopener">Escribir por WhatsApp →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="galeria">
+      <span class="section-label reveal">Galería</span>
+      <h2 class="reveal">Mis creaciones en Instagram</h2>
+      <div class="gallery-wrap">
+        <div class="gallery">
+          <div class="gallery-item reveal"><img src="assets/instagram/post-1.webp" alt="Crochet 1" loading="lazy"></div>
+          <div class="gallery-item reveal"><img src="assets/instagram/post-2.webp" alt="Crochet 2" loading="lazy"></div>
+          <div class="gallery-item reveal"><img src="assets/instagram/post-3.webp" alt="Crochet 3" loading="lazy"></div>
+          <div class="gallery-item reveal"><img src="assets/instagram/post-4.webp" alt="Crochet 4" loading="lazy"></div>
+          <div class="gallery-item reveal"><img src="assets/instagram/post-5.webp" alt="Crochet 5" loading="lazy"></div>
+          <div class="gallery-item reveal"><img src="assets/instagram/post-6.webp" alt="Crochet 6" loading="lazy"></div>
+          <div class="gallery-item reveal"><img src="assets/instagram/post-7.webp" alt="Crochet 7" loading="lazy"></div>
+          <div class="gallery-item reveal"><img src="assets/instagram/post-8.webp" alt="Crochet 8" loading="lazy"></div>
+          <div class="gallery-item reveal"><img src="assets/instagram/post-9.webp" alt="Crochet 9" loading="lazy"></div>
+          <div class="gallery-item reveal"><img src="assets/instagram/post-10.webp" alt="Crochet 10" loading="lazy"></div>
+          <div class="gallery-item reveal"><img src="assets/instagram/post-11.webp" alt="Crochet 11" loading="lazy"></div>
+          <div class="gallery-item reveal"><img src="assets/instagram/post-12.webp" alt="Crochet 12" loading="lazy"></div>
+        </div>
+      </div>
+      <p style="text-align:center;margin-top:1.5rem;" class="reveal">
+        <a href="https://www.instagram.com/teje_ideas01/" target="_blank" rel="noopener" style="color:var(--pink);font-weight:700;text-decoration:none;">Ver más en @teje_ideas01 →</a>
+      </p>
+    </section>
+
+    <section>
+      <span class="section-label reveal">En números</span>
+      <h2 class="reveal">Mi perfil en Instagram</h2>
+      <div class="metrics">
+        <div class="metric-card reveal">
+          <div class="metric-num" data-target="18">0</div>
+          <div class="metric-label">Publicaciones</div>
+        </div>
+        <div class="metric-card reveal">
+          <div class="metric-num" data-target="14">0</div>
+          <div class="metric-label">Seguidores</div>
+        </div>
+        <div class="metric-card reveal">
+          <div class="metric-num" data-target="17">0</div>
+          <div class="metric-label">Seguidos</div>
+        </div>
+        <div class="metric-card reveal">
+          <div class="metric-num" data-target="100">0</div>
+          <div class="metric-label">% a mano</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <span class="section-label reveal">Contacto</span>
+      <h2 class="reveal">¿Hacemos algo bonito juntas?</h2>
+      <div class="contact-section reveal">
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('¡Gracias! Para encargos reales, escríbeme por WhatsApp al +57 324 6036069, a teje_ideas01@gmail.com o por Instagram.');">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntame qué te gustaría tejer..." required></textarea>
+          <button type="submit" class="submit-btn">Enviar mensaje</button>
+        </form>
+        <div class="contact-info">
+          <h3>Hablemos</h3>
+          <a class="contact-link contact-link-wa" href="https://wa.me/573246036069?text=Hola%2C%20me%20interesa%20un%20tejido%20en%20crochet" target="_blank" rel="noopener">
+            <span class="icon">💬</span>
+            +57 324 6036069 · WhatsApp
+          </a>
+          <a class="contact-link" href="mailto:teje_ideas01@gmail.com">
+            <span class="icon">✉️</span>
+            teje_ideas01@gmail.com
+          </a>
+          <a class="contact-link" href="https://www.instagram.com/teje_ideas01/" target="_blank" rel="noopener">
+            <span class="icon">📷</span>
+            @teje_ideas01 en Instagram
+          </a>
+          <p style="margin-top:1.5rem;color:var(--muted);line-height:1.7;">Respondo encargos por WhatsApp, email o Instagram. ¡Me encantará leer tu idea!</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <a class="wa-float" href="https://wa.me/573246036069?text=Hola%2C%20me%20interesa%20un%20tejido%20en%20crochet" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+  <footer>
+    <p>© 2026 <strong>Teje Ideas</strong> · @teje_ideas01</p>
+    <p style="margin-top:0.5rem;">Hecho con 🧶 y mucho cariño · <a href="https://www.instagram.com/teje_ideas01/" target="_blank" rel="noopener">Instagram</a></p>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+
+    document.getElementById('menuBtn')?.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    const reveals = document.querySelectorAll('.reveal');
+    const staggerParents = document.querySelectorAll('.gallery, .services-grid, .metrics');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach((el) => io.observe(el));
+
+    staggerParents.forEach((parent) => {
+      [...parent.children].forEach((child, i) => {
+        if (child.classList.contains('reveal')) child.style.transitionDelay = `${i * 0.08}s`;
+      });
+    });
+
+    const counters = document.querySelectorAll('.metric-num[data-target]');
+    const counterIo = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        const target = +el.dataset.target;
+        const isPercent = el.parentElement?.querySelector('.metric-label')?.textContent.includes('%');
+        let start = 0;
+        const dur = 1400;
+        const t0 = performance.now();
+        const tick = (now) => {
+          const p = Math.min((now - t0) / dur, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          const val = Math.round(eased * target);
+          el.textContent = isPercent ? val + '%' : val;
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+        counterIo.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach((c) => counterIo.observe(c));
+
+    const parallaxImg = document.getElementById('parallaxImg');
+    window.addEventListener('scroll', () => {
+      if (!parallaxImg) return;
+      const band = document.getElementById('parallaxBand');
+      const rect = band.getBoundingClientRect();
+      const center = rect.top + rect.height / 2 - window.innerHeight / 2;
+      parallaxImg.style.transform = `translateY(${center * 0.15}px)`;
+    });
+  </script>
+</body>
+</html>
